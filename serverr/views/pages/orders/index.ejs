@@ -1,0 +1,25 @@
+<%- include('../../partials/siteHeader', {pageTitle: "Orders Page"}) %>
+
+<%if(orders.length > 0){%>
+<table border>
+  <tr>
+    <th>Order Id</th>
+    <th>Operations</th>
+    <th>Status</th>
+  </tr>
+  <% orders.forEach((oneOrder) => { %>
+  <tr>
+    <th><%= oneOrder._id %></th>
+    <th>
+      <a href="/orders/updateForm/<%=oneOrder._id%>"> Update Status </a>
+      &nbsp;&nbsp;&nbsp;
+    </th>
+    <th><%= oneOrder.status %></th>
+  </tr>
+  <% }); %>
+</table>
+<%} else {%>
+<h3>No Orders created yet !!!!</h3>
+<%}%>
+
+<%- include('../../partials/siteFooter') %>
