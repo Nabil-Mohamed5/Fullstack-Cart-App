@@ -1,0 +1,25 @@
+<nav class="navbar">
+  <!-- Brand/Logo Section -->
+  <div class="navbar-brand" (click)="home()">FullstackCart</div>
+
+  <!-- Navigation Actions -->
+  <div class="navbar-actions">
+    @if(authService.isLoggedIn()) {
+    <div class="user-greeting">Hello, {{ authService.currentUser() }}</div>
+    } @else {
+    <button class="btn-login" (click)="login()">Sign In</button>
+    }
+
+    <button
+      class="cart-button"
+      (click)="cart()"
+      [attr.aria-label]="'Shopping cart with ' + cartOutlet.totalQuantity() + ' items'"
+    >
+      Cart @if(cartOutlet.totalQuantity() > 0) {
+      <span class="cart-count" [attr.aria-label]="cartOutlet.totalQuantity() + ' items in cart'">
+        {{ cartOutlet.totalQuantity() }}
+      </span>
+      }
+    </button>
+  </div>
+</nav>

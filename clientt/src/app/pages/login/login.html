@@ -1,0 +1,51 @@
+<div class="login-container">
+  <form (ngSubmit)="onSubmit()" novalidate>
+    <h2>Welcome Back</h2>
+    <p class="welcome-text">Sign in to your FullstackCart account</p>
+
+    <div class="input-group">
+      <input
+        type="text"
+        [(ngModel)]="userName"
+        name="userName"
+        placeholder="Username or Email"
+        required
+        autocomplete="username"
+        #userInput
+      />
+    </div>
+
+    <div class="input-group">
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Password"
+        required
+        autocomplete="current-password"
+        #passwordInput
+      />
+    </div>
+
+    <button type="submit" [disabled]="!userName || !password">
+      <span>Sign In</span>
+    </button>
+
+    <div class="forgot-password">
+      <a href="#" (click)="$event.preventDefault()">Forgot your password?</a>
+    </div>
+
+    <div class="divider">
+      <span>or continue with</span>
+    </div>
+
+    <div class="social-login">
+      <button type="button" class="social-btn" (click)="$event.preventDefault()">Google</button>
+      <button type="button" class="social-btn" (click)="$event.preventDefault()">GitHub</button>
+    </div>
+
+    <div class="login-footer">
+      Don't have an account? <a href="#" (click)="$event.preventDefault()">Create one</a>
+    </div>
+  </form>
+</div>

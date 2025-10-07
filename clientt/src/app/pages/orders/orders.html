@@ -1,0 +1,47 @@
+<div class="invoice">
+  <header class="invoice-header">
+    <div class="brand">
+      <h1>FullstackCart</h1>
+      <p class="muted">Invoice</p>
+    </div>
+    <div class="meta">
+      <div><strong>Invoice #</strong> {{ orderNumber }}</div>
+      <div><strong>Date</strong> {{ today | date : 'mediumDate' }}</div>
+      <div><strong>Items</strong> {{ cart.totalQuantity() }}</div>
+    </div>
+  </header>
+
+  <section class="invoice-body">
+    <table class="items-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th class="right">Unit Price</th>
+          <th class="center">Qty</th>
+          <th class="right">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cart.items(); let i = index">
+          <td class="item-name">{{ item.name }}</td>
+          <td class="right">{{ item.price | currency }}</td>
+          <td class="center">{{ item.quantity }}</td>
+          <td class="right">{{ item.price * item.quantity | currency }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="totals">
+          <td colspan="3" class="right">Subtotal</td>
+          <td class="right strong">{{ cart.totalPrice() | currency }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <footer class="invoice-footer muted">
+    <p>
+      Thank you for your purchase! If you have any questions about this invoice please contact
+      support.
+    </p>
+  </footer>
+</div>
